@@ -60,6 +60,12 @@ sudo ln -s inchiformat.so libinchiformat.so
 #echo '$POSTGRESQL_LIB_DIR/' | sudo tee -a /etc/ld.so.conf.d/libc.conf
 #sudo ldconfig
 
+# or prefferbally if other versions of obabel are installed set the shared libary path
+# on server start (example below is CentOS)
+# $ echo "LD_LIBRARY_PATH=/usr/lib64/pgsql" >> /etc/sysconfig/pgsql
+# the edit postgresql.service and add the following under '[service]'
+# EnvironmentFile=-/etc/sysconfig/pgsql
+
 # remove unused files, only the lib dir is needed
 sudo rm $OB_INSTALL_DIR/bin/ -rf
 sudo rm $OB_INSTALL_DIR/include/ -rf
